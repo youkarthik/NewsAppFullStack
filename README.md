@@ -32,7 +32,9 @@ Before running the tests make sure you are serving the app via `ng serve`.
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## Command used to generate this project
-Fornt-end Project is originally generated using Angular CLI, and backend is built in ASP.Net Core using dotnet core CLI.
+Front-end Project is originally generated using Angular CLI, and backend is built in ASP.Net Core using dotnet core CLI.
+
+
 
 ## The NEWS API to be used as data source
 - To get category wise news use the following end point. [Category News endpoint]
@@ -53,3 +55,16 @@ P.S :- You need to generate the API_KEY for the above endpoints and replace
 You need to signup to [NEWSAPI] (https://newsapi.org/register).
 
 - After registration, API key is generated for you.
+
+
+## Important points/instructions to be followed
+
+1.	Must have added all sprints in the same repository. Please don’t create any additional repository and keep pushing the changes into the repository reported in very first iteration.
+2.	Must add .gitignore file in your repository to avoid uploading any compiled/ third party binaries.
+3.	Must define the steps in README file to reproduce the images used for docker.
+4.	Must add your Mentor as developer in your repository.
+5.	Must close the issues after fixing and notify the respective Mentor through slack or mail.
+6.	You should change the launchurl property of the application to point to your API.
+7.	Use port number 8081 for API and 8089 for Authentication layer.
+8.	Code must be appropriately/descriptively commented in all layers.
+9.	Error/exception handling must be done to make it user friendly. There should not be any console logs in your application.
