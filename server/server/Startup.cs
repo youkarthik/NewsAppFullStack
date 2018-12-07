@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using server.Models;
+using server.Services;
 
 namespace server
 {
@@ -24,6 +26,9 @@ namespace server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.Configure<NewsApiSettings>(Configuration.GetSection("NewsApiSettings"));
+            services.AddScoped<INewsService, NewsService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
