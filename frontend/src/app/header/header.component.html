@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top docs-navbar-header">
+  <a class="navbar-brand" href="#">News Application</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <button mat-flat-button color="primary" [routerLink]="['/home']" class="clsBtnDashboard">Dashboard</button>
+      </li>
+      <li class="nav-item">
+        <button mat-flat-button color="primary" [routerLink]="['/favorites']" class="clsBtnFavorites">Favorites</button>
+      </li>
+    </ul>
+    <div class="input-group">
+      <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" 
+        id="txtSearch">
+      <div class="input-group-btn">
+        <button class="btn btn-sm" (click)="onSearch()" type="submit" color="primary" id="btnSearch">Search</button>
+      </div>
+    </div>
+
+    <!-- <ul class="navbar-nav navbar-right">
+          <li class="nav-item">
+              <button mat-flat-button (click)="logout()" class="clsBtnLogout">Logout</button>
+          </li>
+      </ul> -->
+  </div>
+</nav>
