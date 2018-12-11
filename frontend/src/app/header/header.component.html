@@ -13,18 +13,18 @@
         <button mat-flat-button color="primary" [routerLink]="['/favorites']" class="clsBtnFavorites">Favorites</button>
       </li>
     </ul>
-    <div class="input-group">
-      <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" 
-        id="txtSearch">
-      <div class="input-group-btn">
-        <button class="btn btn-sm" (click)="onSearch()" type="submit" color="primary" id="btnSearch">Search</button>
-      </div>
-    </div>
+    
 
-    <!-- <ul class="navbar-nav navbar-right">
+    <ul class="navbar-nav navbar-right">
           <li class="nav-item">
-              <button mat-flat-button (click)="logout()" class="clsBtnLogout">Logout</button>
+              <div class="input-group">
+                  <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search"  [(ngModel)]="searchText"
+                    id="search-text">
+                  <div class="input-group-btn">
+                    <button class="btn btn-sm" (click)="onSearch()" type="submit" color="primary" id="search-btn">Search</button>
+                  </div>
+                </div>
           </li>
-      </ul> -->
+      </ul> 
   </div>
 </nav>

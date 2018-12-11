@@ -25,6 +25,12 @@ export class NewsService {
         return this.http.get<News[]>(endpoint).pipe(retry(3));
     }
 
+    getNewsForSearchText(searchText: string) : Observable<Array<News>>
+    {
+        const endpoint = this.newsApiEndPoint + "SearchNews/" + searchText;
+        return this.http.get<News[]>(endpoint).pipe(retry(3));
+    }
+
     
 
 

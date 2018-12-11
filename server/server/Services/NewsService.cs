@@ -21,14 +21,14 @@ namespace server.Services
             _newsApiSettings = newsApiSettings;
             _newsApiBaseUrl = newsApiSettings.Value.NewsApiBaseUrl;
             var apiKey = newsApiSettings.Value.NewsApiKey;
-            _miscParams = $"country=in&language=en&page=1&apikey={apiKey}";
+            _miscParams = $"language=en&page=1&apikey={apiKey}";
         }
 
         public List<News> GetTopHeadlines(string categoryName = null)
         {
             
             var baseAddress = new Uri(_newsApiBaseUrl);
-            string topHeadlinesUrl = $"top-headlines?{_miscParams}";
+            string topHeadlinesUrl = $"top-headlines?{_miscParams}&country=in";
 
             if (categoryName != null)
                 topHeadlinesUrl += "&category=" + categoryName.Trim();
@@ -62,7 +62,8 @@ namespace server.Services
                 using (var response = httpClient.GetAsync(searchNewsUrl))
                 {
                     string responseData = response.Result.Content.ReadAsStringAsync().Result;
-                    var news = JsonConvert.DeserializeObject<List<News>>(responseData);
+                    var jsonObj = JObject.Parse(responseData);
+                    var news = jsonObj["articles"].ToObject<List<News>>();
                     return news;
                 }
             }

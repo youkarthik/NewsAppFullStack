@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http'; 
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -12,6 +13,7 @@ import { MaterialModule } from './material/material.module';
 import { CardComponent } from './card/card.component';
 import { ContainerComponent } from './container/container.component';
 import { NewsService } from './services/newsservice';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -21,10 +23,11 @@ import { NewsService } from './services/newsservice';
     HomeComponent,
     HeaderComponent,
     CardComponent,
-    ContainerComponent
+    ContainerComponent,
+    SearchComponent
   ],
   imports: [
-    BrowserModule, RoutingModule, MaterialModule, BrowserAnimationsModule, HttpModule, HttpClientModule
+    BrowserModule, RoutingModule, MaterialModule, BrowserAnimationsModule, HttpModule, HttpClientModule, FormsModule
   ],
   providers: [NewsService],
   bootstrap: [AppComponent]
