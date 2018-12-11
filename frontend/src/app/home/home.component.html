@@ -1,25 +1,25 @@
+<mat-expansion-panel [expanded]="true" id="headlines">
+  <mat-expansion-panel-header>
+    <b>Headline News</b>
+  </mat-expansion-panel-header>
 
-    
-      <mat-expansion-panel [expanded]="true" id="headlines">
-        <mat-expansion-panel-header>
-          <b>Headline News</b>
-        </mat-expansion-panel-header>
-
-        <p>TO DO</p>
-
-
-      </mat-expansion-panel>
+  <p>
+    <app-container [newsList]="headlineNews"></app-container>
+  </p>
 
 
-
-      <mat-expansion-panel [expanded]="true" id="category">
-        <mat-expansion-panel-header>
-          <b>Category News</b>
-        </mat-expansion-panel-header>
-
-        <p>TO DO</p>
+</mat-expansion-panel>
 
 
-      </mat-expansion-panel>
-    
-  
+
+<mat-expansion-panel [expanded]="true" id="category">
+  <mat-expansion-panel-header>
+    <b>Category News</b>
+  </mat-expansion-panel-header>
+
+  <p>
+    <app-container [newsList]="categoryNews"></app-container>
+  </p>
+
+
+</mat-expansion-panel>

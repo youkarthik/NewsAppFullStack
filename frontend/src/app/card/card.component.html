@@ -1,0 +1,16 @@
+<div> 
+  <mat-card class="news-card">
+      <mat-card-title class="news-title">{{news?.title}}</mat-card-title>
+      <!-- <mat-card-subtitle>{{news?.author}}</mat-card-subtitle> -->
+      <mat-card-subtitle>{{news?.publishedAt}}</mat-card-subtitle>
+    <mat-card-header>
+      <img class="news-poster" mat-card-image [src]="news?.urlToImage" [alt]="news?.title">
+    </mat-card-header>
+    <mat-card-content class="news-text">
+        <p>{{news?.description}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+       
+    </mat-card-actions>
+  </mat-card>
+</div>

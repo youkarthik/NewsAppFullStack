@@ -39,6 +39,9 @@ namespace server
                 app.UseDeveloperExceptionPage();
             }
 
+            //Enabling Cors
+            app.UseCors(options => options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+
             app.UseMvc();
         }
     }

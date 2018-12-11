@@ -1,0 +1,9 @@
+.card-flex {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+body{
+    top: 20px;
+}
