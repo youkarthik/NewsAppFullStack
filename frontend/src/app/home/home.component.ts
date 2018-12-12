@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   categoryNews: Array<News>;
   selectedCategory: string;
   defaultCategory: string = "General";
-  constructor(private newsService: NewsService) { 
+  constructor(private newsService: NewsService) {
     this.selectedCategory = this.defaultCategory;
   }
 
@@ -27,8 +27,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getCategoryNews()
-  {
+  getCategoryNews() {
     return this.newsService.getCategoryTopHeadlines(this.selectedCategory).subscribe(response => {
       this.categoryNews = response;
     });
@@ -38,4 +37,9 @@ export class HomeComponent implements OnInit {
     this.getCategoryNews();
   }
 
+  reload(arg: any) {
+    this.ngOnInit()
+  }
+
+  
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { News } from '../models/news';
 
 @Component({
@@ -8,9 +8,14 @@ import { News } from '../models/news';
 })
 export class ContainerComponent implements OnInit {
   @Input() newsList: Array<News>;
+  @Output() refreshNewsList = new EventEmitter()
   constructor() { }
 
   ngOnInit() {
+  }
+
+  reload(arg: any) {
+    this.refreshNewsList.emit(arg);
   }
 
 }

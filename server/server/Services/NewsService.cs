@@ -56,9 +56,12 @@ namespace server.Services
 
             apiNews.ForEach(x =>
             {
-                var existsInDb = dbNews.Any(y => y.Title == x.Title);
-                if (existsInDb)
+                var dbRecord = dbNews.Where(y => y.Title == x.Title).FirstOrDefault();
+                if (dbRecord != null)
+                {
                     x.IsFavorite = true;
+                    x.Id = dbRecord.Id;
+                }
             });
         }
 
@@ -111,7 +114,9 @@ namespace server.Services
         /// <returns></returns> 
         public List<News> GetAllNews()
         {
-            return _newsRepository.GetAllNews();
+            var news = _newsRepository.GetAllNews();
+            news.ForEach(x => x.IsFavorite = true);
+            return news;
         }
 
     }

@@ -39,7 +39,7 @@ export class NewsService {
 
     deleteFavoriteNews(id: number): Observable<{}>
     {
-        const endpoint = `${this.newsApiEndPoint}/${id}`;
+        const endpoint = `${this.newsApiEndPoint}${id}`;
         return this.http.delete(endpoint);
     
     }

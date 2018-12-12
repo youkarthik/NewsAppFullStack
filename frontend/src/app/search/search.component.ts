@@ -26,4 +26,9 @@ export class SearchComponent implements OnInit {
     });
   }
 
+  reload(arg: any)
+  {
+    this.ngOnInit();
+  }
+
 }

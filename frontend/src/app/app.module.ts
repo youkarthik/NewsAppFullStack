@@ -14,6 +14,7 @@ import { CardComponent } from './card/card.component';
 import { ContainerComponent } from './container/container.component';
 import { NewsService } from './services/newsservice';
 import { SearchComponent } from './search/search.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 
 
@@ -24,7 +25,8 @@ import { SearchComponent } from './search/search.component';
     HeaderComponent,
     CardComponent,
     ContainerComponent,
-    SearchComponent
+    SearchComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule, RoutingModule, MaterialModule, BrowserAnimationsModule, HttpModule, HttpClientModule, FormsModule

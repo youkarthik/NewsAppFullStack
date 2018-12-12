@@ -1,3 +1,3 @@
 <div class="card-flex">
-  <app-card *ngFor="let news of newsList" [news]="news"></app-card>
+  <app-card *ngFor="let news of newsList" [news]="news" (refreshNewsList)="reload($event)"></app-card>
 </div>
