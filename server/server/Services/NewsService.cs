@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using server.DataAccess;
 using server.Models;
 using System;
 using System.Collections.Generic;
@@ -13,11 +14,13 @@ namespace server.Services
     public class NewsService : INewsService
     {
         private readonly IOptions<NewsApiSettings> _newsApiSettings;
+        private readonly INewsRepository _newsRepository;
         string _newsApiBaseUrl;
         string _miscParams;
         
-        public NewsService(IOptions<NewsApiSettings> newsApiSettings)
+        public NewsService(IOptions<NewsApiSettings> newsApiSettings, INewsRepository newsRespository)
         {
+            _newsRepository = newsRespository;
             _newsApiSettings = newsApiSettings;
             _newsApiBaseUrl = newsApiSettings.Value.NewsApiBaseUrl;
             var apiKey = newsApiSettings.Value.NewsApiKey;
@@ -41,9 +44,22 @@ namespace server.Services
                     string responseData = response.Result.Content.ReadAsStringAsync().Result;
                     var jsonObj = JObject.Parse(responseData);
                     var news = jsonObj["articles"].ToObject<List<News>>();
+                    UpdateIsFavorite(news);
                     return news;
                 }
             }
+        }
+
+        private void UpdateIsFavorite(List<News> apiNews)
+        {
+            var dbNews = GetAllNews();
+
+            apiNews.ForEach(x =>
+            {
+                var existsInDb = dbNews.Any(y => y.Title == x.Title);
+                if (existsInDb)
+                    x.IsFavorite = true;
+            });
         }
 
         public List<News> GetNewsBySearch(string searchQuery)
@@ -64,9 +80,39 @@ namespace server.Services
                     string responseData = response.Result.Content.ReadAsStringAsync().Result;
                     var jsonObj = JObject.Parse(responseData);
                     var news = jsonObj["articles"].ToObject<List<News>>();
+                    UpdateIsFavorite(news);
                     return news;
                 }
             }
         }
+
+        /// <summary>
+        /// method to add news to the news db collection
+        /// </summary>
+        /// <param name="news"></param>
+        /// <returns></returns>
+        public News AddNews(News news)
+        {
+            return _newsRepository.AddNews(news);
+        }
+
+        /// <summary>
+        /// Method to delete a news by its id
+        /// </summary>
+        /// <param name="id">News object key identifier</param>
+        public void DeleteNews(int id)
+        {
+            _newsRepository.DeleteNews(id);
+        }
+
+        /// <summary>
+        /// Method to get all news collection from db
+        /// </summary>
+        /// <returns></returns> 
+        public List<News> GetAllNews()
+        {
+            return _newsRepository.GetAllNews();
+        }
+
     }
 }

@@ -10,5 +10,8 @@ namespace server.Services
     {
         List<News> GetTopHeadlines(string categoryName = null);
         List<News> GetNewsBySearch(string searchQuery);
+        News AddNews(News news);
+        void DeleteNews(int id);
+        List<News> GetAllNews();
     }
 }
