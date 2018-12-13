@@ -9,7 +9,7 @@
     <mat-card-content class="news-text">
       <p>{{news?.description}}</p>
     </mat-card-content>
-    <mat-card-actions class="movie-actions" align="end">
+    <mat-card-actions class="news-actions" align="end">
       <button *ngIf="!news?.isFavorite" mat-raised-button color="primary" class="favorite-btn" (click)="onAdd()">Add to
         Favorites </button>
       <button *ngIf="news?.isFavorite" mat-raised-button color="warn" class="unfavorite-btn" (click)="onRemove()">Remove

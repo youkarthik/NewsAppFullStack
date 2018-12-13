@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace server.Models
 {
+    /// <summary>
+    /// News model
+    /// </summary>
     public class News
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]

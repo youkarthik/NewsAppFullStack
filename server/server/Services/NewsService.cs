@@ -18,23 +18,34 @@ namespace server.Services
         string _newsApiBaseUrl;
         string _miscParams;
         
+        /// <summary>
+        /// constuctor injecting newsapi app setting and NewsRepository
+        /// </summary>
+        /// <param name="newsApiSettings">app settings config</param>
+        /// <param name="newsRespository">news repository</param>
         public NewsService(IOptions<NewsApiSettings> newsApiSettings, INewsRepository newsRespository)
         {
             _newsRepository = newsRespository;
             _newsApiSettings = newsApiSettings;
             _newsApiBaseUrl = newsApiSettings.Value.NewsApiBaseUrl;
             var apiKey = newsApiSettings.Value.NewsApiKey;
-            _miscParams = $"language=en&page=1&apikey={apiKey}";
+            _miscParams = $"language=en&page=1&apikey={apiKey}"; //misc parameters
         }
 
+        /// <summary>
+        /// Service method to get top headlines new sfrom newsapi service
+        /// </summary>
+        /// <param name="categoryName">category name</param>
+        /// <returns></returns>
         public List<News> GetTopHeadlines(string categoryName = null)
         {
             
             var baseAddress = new Uri(_newsApiBaseUrl);
-            string topHeadlinesUrl = $"top-headlines?{_miscParams}&country=in";
+            string topHeadlinesUrl = $"top-headlines?{_miscParams}&country=in"; //top-headlines only working with country param
 
             if (categoryName != null)
                 topHeadlinesUrl += "&category=" + categoryName.Trim();
+
             using (var httpClient = new HttpClient { BaseAddress = baseAddress })
             {
                 httpClient.DefaultRequestHeaders.TryAddWithoutValidation("accept", "application/json");
@@ -50,6 +61,10 @@ namespace server.Services
             }
         }
 
+        /// <summary>
+        /// update news collection object with isfavorite flag for each news
+        /// </summary>
+        /// <param name="apiNews">news collection from api</param>
         private void UpdateIsFavorite(List<News> apiNews)
         {
             var dbNews = GetAllNews();
@@ -65,6 +80,11 @@ namespace server.Services
             });
         }
 
+        /// <summary>
+        /// Service method to get the news by providing custom search string
+        /// </summary>
+        /// <param name="searchQuery">search text</param>
+        /// <returns></returns>
         public List<News> GetNewsBySearch(string searchQuery)
         {
 

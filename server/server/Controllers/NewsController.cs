@@ -15,6 +15,10 @@ namespace server.Controllers
     {
         private readonly INewsService _service;
 
+        /// <summary>
+        /// constructor injecting service layer
+        /// </summary>
+        /// <param name="service"></param>
         public NewsController(INewsService service)
         {
             _service = service;

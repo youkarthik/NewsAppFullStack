@@ -32,7 +32,7 @@ export class CardComponent implements OnInit {
     this.newsService.deleteFavoriteNews(this.news.id).subscribe(
       () => {
         this.refreshNewsList.emit(null);
-        //  this.snackBar.open('Movie added to Watchlist', '', { duration: 5000 })
+        //  this.snackBar.open('News added to Watchlist', '', { duration: 5000 })
       },
       error => {
         //  this.snackBar.open(error, '', { duration: 5000 }); 

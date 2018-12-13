@@ -20,6 +20,11 @@ namespace server.DataAccess
             _context = context;
         }
 
+        /// <summary>
+        /// method to add news to the db
+        /// </summary>
+        /// <param name="news">single News object</param>
+        /// <returns></returns>
         public News AddNews(News news)
         {
             var newsExists = _context.News.Any(e => e.Title == news.Title);
@@ -35,6 +40,10 @@ namespace server.DataAccess
             }
         }
 
+        /// <summary>
+        /// method to delete the new by id
+        /// </summary>
+        /// <param name="id">identifier</param>
         public void DeleteNews(int id)
         {
             var news = _context.News.Where(x => x.Id == id).FirstOrDefault();
@@ -50,6 +59,10 @@ namespace server.DataAccess
             }
         }
 
+        /// <summary>
+        /// method to get all news from db
+        /// </summary>
+        /// <returns></returns>
         public List<News> GetAllNews()
         {
             return _context.News.ToList();
