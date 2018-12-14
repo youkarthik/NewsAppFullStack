@@ -43,7 +43,7 @@ namespace test
             var news = new News()
             {
                 Id = 6,
-                Description = "Good"
+                Description = "news desc 6"
             };
             mockNewsRepository.Setup(x => x.AddNews(It.IsAny<News>())).Returns(news);
             var service = new NewsService(Options.Create(new NewsApiSettings()), mockNewsRepository.Object);
