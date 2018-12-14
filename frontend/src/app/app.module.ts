@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
@@ -29,7 +27,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
     FavoritesComponent
   ],
   imports: [
-    BrowserModule, RoutingModule, MaterialModule, BrowserAnimationsModule, HttpModule, HttpClientModule, FormsModule
+    BrowserModule, RoutingModule, MaterialModule, BrowserAnimationsModule, HttpClientModule, FormsModule
   ],
   providers: [NewsService],
   bootstrap: [AppComponent]

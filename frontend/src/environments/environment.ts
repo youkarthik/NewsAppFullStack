@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  newsApiEndpoint:'http://localhost:8081/api/News/'
+  newsApiEndpoint: 'http://localhost:8081/api/News/'
 };

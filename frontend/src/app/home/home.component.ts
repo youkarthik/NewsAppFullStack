@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { News } from '../models/news';
 import { NewsService } from '../services/newsservice';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +12,8 @@ export class HomeComponent implements OnInit {
   headlineNews: Array<News>;
   categoryNews: Array<News>;
   selectedCategory: string;
-  defaultCategory: string = "General";
-  constructor(private newsService: NewsService) {
+  defaultCategory = 'General';
+  constructor(private newsService: NewsService, private snackBar: MatSnackBar) {
     this.selectedCategory = this.defaultCategory;
   }
 
@@ -24,13 +25,13 @@ export class HomeComponent implements OnInit {
   getHeadlineNews() {
     return this.newsService.getTopHeadlines().subscribe(response => {
       this.headlineNews = response;
-    });
+    }, error => { this.snackBar.open(error, '', { duration: 5000 }); });
   }
 
   getCategoryNews() {
     return this.newsService.getCategoryTopHeadlines(this.selectedCategory).subscribe(response => {
       this.categoryNews = response;
-    });
+    }, error => { this.snackBar.open(error, '', { duration: 5000 }); });
   }
 
   categoryChange() {
@@ -38,8 +39,8 @@ export class HomeComponent implements OnInit {
   }
 
   reload(arg: any) {
-    this.ngOnInit()
+    this.ngOnInit();
   }
 
-  
+
 }

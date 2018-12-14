@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { News } from '../models/news';
 import { NewsService } from '../services/newsservice';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-card',
@@ -12,7 +13,7 @@ export class CardComponent implements OnInit {
   @Input()
   news: News;
   @Output() refreshNewsList = new EventEmitter();
-  constructor(private newsService: NewsService) { }
+  constructor(private newsService: NewsService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -21,9 +22,10 @@ export class CardComponent implements OnInit {
     this.newsService.addFavoriteNews(this.news).subscribe(
       () => {
         this.refreshNewsList.emit(null);
+        this.snackBar.open('News added to Favorites', '', { duration: 5000 });
       },
       error => {
-        //  this.snackBar.open(error, '', { duration: 5000 }); 
+         this.snackBar.open(error, '', { duration: 5000 });
       }
     );
   }
@@ -32,10 +34,10 @@ export class CardComponent implements OnInit {
     this.newsService.deleteFavoriteNews(this.news.id).subscribe(
       () => {
         this.refreshNewsList.emit(null);
-        //  this.snackBar.open('News added to Watchlist', '', { duration: 5000 })
+        this.snackBar.open('News removed from Favorites', '', { duration: 5000 });
       },
       error => {
-        //  this.snackBar.open(error, '', { duration: 5000 }); 
+        this.snackBar.open(error, '', { duration: 5000 });
       }
     );
   }

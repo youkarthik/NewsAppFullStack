@@ -8,7 +8,7 @@ import { News } from '../models/news';
 })
 export class ContainerComponent implements OnInit {
   @Input() newsList: Array<News>;
-  @Output() refreshNewsList = new EventEmitter()
+  @Output() refreshNewsList = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
