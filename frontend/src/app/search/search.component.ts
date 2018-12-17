@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material';
 export class SearchComponent implements OnInit {
   searchText: string;
   searchResultNews: Array<News>;
-  constructor(private service: NewsService, private route: ActivatedRoute, private router: Router, private snackBar: MatSnackBar) { }
+  constructor(private service: NewsService, private route: ActivatedRoute, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
