@@ -5,13 +5,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Docker deployment
 
 Open command prompt
+
 change directory to ~Server/Server
+
 Run > docker build -t newsappserver .
 
 change directory to ~Frontend
+
 Run > docker build -t newsappfrontend .
 
 Change directory to ~(relative root)
+
 Run > docker-compose up
 
 ## Development server
