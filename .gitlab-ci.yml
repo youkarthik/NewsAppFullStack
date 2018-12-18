@@ -2,7 +2,7 @@ image : microsoft/aspnetcore-build:latest
 stages:
   - compile
   - test
-  - build
+  - publish
 compile:
   stage: compile
   script:
