@@ -1,6 +1,6 @@
-import { TestBed } from "@angular/core/testing";
+import { TestBed } from '@angular/core/testing';
 import { NewsService } from './newsservice';
-import { HttpClient, HttpHandler } from "@angular/common/http";
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('NewsService', () => {
     let service: NewsService;

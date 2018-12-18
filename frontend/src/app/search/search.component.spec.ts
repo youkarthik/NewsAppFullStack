@@ -15,7 +15,6 @@ describe('SearchComponent', () => {
   let component: SearchComponent;
   let fixture: ComponentFixture<SearchComponent>;
   let newsService: NewsService;
-  let route: ActivatedRoute;
 
   beforeEach(async(() => {
 
@@ -25,8 +24,8 @@ describe('SearchComponent', () => {
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
         NewsService,
-        //{ provide: NewsService, useValue: newsService },
-        //ActivatedRoute,
+        // { provide: NewsService, useValue: newsService },
+        // ActivatedRoute,
         NewsService,
         {
           provide: ActivatedRoute, useValue: {

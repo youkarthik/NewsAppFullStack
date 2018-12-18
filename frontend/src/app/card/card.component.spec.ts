@@ -49,7 +49,6 @@ describe('CardComponent', () => {
     component.news = new News();
     component.onRemove();
     fixture.detectChanges();
-    
     expect(newsService.deleteFavoriteNews).toHaveBeenCalled();
   });
 });
