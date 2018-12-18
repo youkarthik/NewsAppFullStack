@@ -1,0 +1,24 @@
+version: '3'
+services:
+    db:
+        image: "microsoft/mssql-server-windows-express"
+        ports:
+            - "1433:1433"
+        environment:
+            SA_PASSWORD: "P@ssw0rd"
+            ACCEPT_EULA: "Y"
+    backend:
+        image: "newsappserver"
+        ports:
+            - "8081:80"
+        links:
+            - db
+        environment:
+            SQL_NEWS: "Data source=db;initial catalog=NewsDb;User id=sa;Password=P@ssw0rd"
+    frontend:
+        image: "newsappfrontend"
+        ports:
+            - "4200:4200"
+        links:
+            - backend
+    
