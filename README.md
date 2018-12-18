@@ -2,6 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
 
+## Docker deployment
+
+Open command prompt
+change directory to ~Server/Server
+Run > docker build -t newsappserver .
+
+change directory to ~Frontend
+Run > docker build -t newsappfrontend .
+
+Change directory to ~(relative root)
+Run > docker-compose up
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
